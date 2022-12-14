@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="studyraincloudplotpython">study_raincloudplot_python</h1>
+<h2 id="raincloud-plot%E3%81%A8%E3%81%AF">Raincloud plotとは？</h2>
+<p>Raincloud plotとは、散布図、片側バイオリン図、箱ひげ図の3つのグラフにて構成されたグラフのことです。</p>
+<p><img src="img/python_raincloud_plot_standard2.png" alt="Raincloud plotのサンプル"></p>
+<p>それぞれのグラフの配置の様子から、各グラフを雲や雨、傘と表現します。
+グループ間の平均値を結ぶ線を描くこともあり、これは雷と表現します。</p>
+<ul>
+<li>片側バイオリン図(half violin plot)
+<ul>
+<li>Cloud</li>
+</ul>
+</li>
+<li>散布図(strip plot)
+<ul>
+<li>Rain</li>
+</ul>
+</li>
+<li>箱ひげ図(box plot)
+<ul>
+<li>Umberella</li>
+</ul>
+</li>
+<li>グループ間の平均値を結ぶ線(point plot)
+<ul>
+<li>Thunder</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E3%81%9D%E3%82%8C%E3%81%9E%E3%82%8C%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AE%E7%89%B9%E5%BE%B4">それぞれのグラフの特徴</h2>
+<p><img src="img/sample_all_plot2.png" alt="箱ひげ図、バイオリン図、散布図の比較"></p>
+<h3 id="%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3box-plot">箱ひげ図(box plot)</h3>
+<p>箱ひげ図は、中央値(第2四分位数)、第1四分位数、第3四分位数、最大値、最小値を記載したグラフです。
+その他に平均や外れ値を記載することがあります。</p>
+<p>箱ひげ図でもデータの主だった特徴を捉えることができますが、山がふたつ以上あるデータだとうまく捉えることができません。</p>
+<h3 id="%E3%83%90%E3%82%A4%E3%82%AA%E3%83%AA%E3%83%B3%E5%9B%B3violin-plot">バイオリン図(violin plot)</h3>
+<p>バイオリン図は箱ひげ図にカーネル密度グラフを付加したグラフです。</p>
+<p>バイオリンの形と表されるカーネル密度グラフにより、山が複数あるグラフでもどのような偏りがあるかを捉えることができます。
+箱ひげ図が真ん中にあるので、箱ひげ図の情報よりも多くの情報を得られます。</p>
+<p>ただし、カーネル密度により滑らかに描画するので、値がない箇所においても値があるかのように表示されてしまいます。
+バンド幅の設定によって見え方も変わります。
+また同じカーネル密度グラフが左右2つあるので、情報が余計です（個人的主観）。</p>
+<h3 id="%E6%95%A3%E5%B8%83%E5%9B%B3strip-plot">散布図(strip plot)</h3>
+<p>散布図は、平均や中央値はわかりませんが、値のばらつき度合いが分かります。
+特に外れ値や値のない谷間の箇所がどこかを知るのに役立ちます。</p>
+<h3 id="raincloud-plot">Raincloud plot</h3>
+<p><img src="img/sample_all_plot.png" alt="箱ひげ図、バイオリン図、散布図の比較"></p>
+<p>箱ひげ図、バイオリン図、散布図、それぞれデータの特徴を捉えることができますが、それひとつだけでは捉えきれない特徴があります。</p>
+<p><img src="img/sample_raincloud_plot.png" alt="Raincloud plotのサンプル"></p>
+<p>Raincloud plotでは、余計な片方のカーネル密度グラフを削除、箱ひげ図を離して見やすくしています。
+また、散布図の付加で外れ値の情報も得られ、値がない谷間の箇所も分かります。</p>
+<p>Raincloud plotは、それぞれのグラフの長所と短所をうまく混ぜて、ひとつにまとめたグラフです。
+中央値(第2四分位数)、第1四分位数、第3四分位数、最大値、最小値、値のばらつき、まとまり具合、外れ値がわかり、多くの情報をひと目で知ることができるグラフになります。</p>
+<h2 id="python%E3%81%A7%E3%81%AEraincloud-plotptitprince%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">PythonでのRaincloud plot(ptitprinceの使い方)</h2>
+<p>PythonにおけるRaincloud plotの出力方法をご紹介します。</p>
+<p>ライブラリは<a href="https://github.com/pog87/PtitPrince">pog87/PtitPrince</a>を用います。</p>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">インストール</h3>
+<p>まず、pipまたはcondaにてptitprinceをインストールします。</p>
+<pre class="hljs"><code><div>pip install ptitprince
+</div></code></pre>
+<pre class="hljs"><code><div>conda install -c conda-forge ptitprince
+</div></code></pre>
+<p>あるいは、<a href="https://github.com/pog87/PtitPrince">pog87/PtitPrince</a>より、<code>git clone</code>して下記を実行しインストールします。</p>
+<pre class="hljs"><code><div>python setup.py install
+</div></code></pre>
+<h3 id="%E6%BA%96%E5%82%99">準備</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> ptitprince <span class="hljs-keyword">as</span> pt
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+</div></code></pre>
+<p>データはタイタニックを使ってみます。</p>
+<pre class="hljs"><code><div>titanic = sns.load_dataset(<span class="hljs-string">'titanic'</span>)
+</div></code></pre>
+<p>ptitprinceは可視化ライブラリSeabornをベースにしていますので、Seabornでスタイルの調整などができます。</p>
+<pre class="hljs"><code><div>sns.set()
+</div></code></pre>
+<h3 id="raincloud-plot-%E5%9F%BA%E6%9C%AC%E5%BC%95%E6%95%B0">Raincloud plot 基本引数</h3>
+<ul>
+<li><code>data</code>
+<ul>
+<li>データセット</li>
+</ul>
+</li>
+<li><code>y</code></li>
+<li><code>x</code></li>
+</ul>
+<p><code>data</code>にデータセットを指定し、<code>y</code>に変数を指定します。
+二変数で並べて表示する場合は、<code>x</code>に別の変数を指定します。</p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">4</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"horizontal"</span>)
+pt.RainCloud(data=titanic, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_standard.png" alt="Raincloud plotの基本描画"></p>
+<p>平均値を結ぶ線、Thunderは、デフォルトでは表示されておらず、<code>pointplot=True</code>で表示されます。</p>
+<pre class="hljs"><code><div>pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, pointplot=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_standard2.png" alt="Raincloud plotにThunderを追加"></p>
+<h3 id="%E5%90%91%E3%81%8D%E3%81%AE%E5%A4%89%E6%9B%B4orient">向きの変更(orient)</h3>
+<ul>
+<li><code>orient=&quot;h&quot;</code>
+<ul>
+<li>水平</li>
+</ul>
+</li>
+<li><code>orient=&quot;v&quot;</code>
+<ul>
+<li>垂直(デフォルト)</li>
+</ul>
+</li>
+</ul>
+<p>グラフの向きは垂直がデフォルトになっています。</p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">4</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"horizontal"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"vertical"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_orient.png" alt="Raincloud plotの向きを変更"></p>
+<h3 id="%E3%82%AB%E3%83%A9%E3%83%BC%E3%83%91%E3%83%AC%E3%83%83%E3%83%88%E3%81%AE%E5%A4%89%E6%9B%B4palette">カラーパレットの変更(palette)</h3>
+<p>片側バイオリンと散布図に使われている色は、<code>palette</code>にて変更することができます。</p>
+<p>カラーパレットは、Seabornにて使われているカラーパレットを利用できます。</p>
+<ul>
+<li><code>palette</code>: カラーパレットの指定 (デフォルト: Set2)</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">8</span>))
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"Blues"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'Blues'</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"tab10"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"Set1"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'Set1'</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">"colorblind"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'colorblind'</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_palette.png" alt="Raincloud plotのカラーパレットを変更"></p>
+<h3 id="x%E8%BB%B8%E3%81%AE%E8%A1%A8%E7%A4%BA%E9%A0%86%E5%BA%8F%E3%81%AE%E5%A4%89%E6%9B%B4order">x軸の表示順序の変更(order)</h3>
+<ul>
+<li><code>order</code>: xに設定したカテゴリ変数の順序を指定</li>
+</ul>
+<p><code>x</code>に指定した変数の順序を<code>order</code>にて変更することができます。</p>
+<p>デフォルトで順序は値の昇順になります。</p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">4</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"vertical"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, order=[<span class="hljs-string">'Second'</span>, <span class="hljs-string">'Third'</span>, <span class="hljs-string">'First'</span>])
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_order.png" alt="Raincloud plotのx軸の表示順序の変更"></p>
+<h3 id="cloud%E7%89%87%E5%81%B4%E3%83%90%E3%82%A4%E3%82%AA%E3%83%AA%E3%83%B3">Cloud(片側バイオリン)</h3>
+<p>Cloud、片側バイオリンの幅や位置などの調整方法です。</p>
+<ul>
+<li><code>width_viol</code>: cloudの幅 (デフォルト=.7)</li>
+<li><code>bw</code>: バンド幅 (デフォルト=.2)</li>
+<li><code>linewidth</code>: cloudの線幅 (デフォルト=1)</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">8</span>))
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"width_viol=.5"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>, width_viol=<span class="hljs-number">.5</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"width_viol=.5, bw=.1"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>, width_viol=<span class="hljs-number">.5</span>, bw=<span class="hljs-number">.1</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">"width_viol=.3, bw=.5, linewidth=5"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>, width_viol=<span class="hljs-number">.3</span>, bw=<span class="hljs-number">.5</span>, linewidth=<span class="hljs-number">5</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_cloud.png" alt="Raincloud plotのCloudの調整"></p>
+<p>デフォルトですと、バイオリンの高さが高すぎて飛び出たり重なったりすることもあるので、<code>width_viol</code>にて高さを調整します。</p>
+<ul>
+<li><code>offset</code>: cloudの位置調整 (デフォルト: <code>max(width_box/1.8, .15) + .05</code>)</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=sample, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>, width_viol=<span class="hljs-number">.3</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"offset=.12"</span>)
+pt.RainCloud(data=sample, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"v"</span>, width_viol=<span class="hljs-number">.3</span>, offset=<span class="hljs-number">.12</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_offset.png" alt="Raincloud plotのCloudの調整"></p>
+<p>Cloudの位置が離れすぎていると感じたら、<code>offset</code>を指定することで、調整することができます。
+少しの値でけっこうずれるので、ちょっと調整は大変ですが...</p>
+<h3 id="rain%E6%95%A3%E5%B8%83%E5%9B%B3">Rain(散布図)</h3>
+<p>Rain、散布図の大きさや色などの調整方法です。</p>
+<ul>
+<li><code>point_size</code>: 点の大きさ (デフォルト=3)</li>
+<li><code>jitter</code>: 点のばらつき (デフォルト=1)
+<ul>
+<li>ばらつきを広くしたり、狭くしたりできます</li>
+</ul>
+</li>
+<li><code>rain_edgecolor</code>: 輪郭線の色</li>
+<li><code>rain_linewidth</code>: 輪郭線の幅</li>
+<li><code>rain_alpha</code>: 点の透過度</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">8</span>))
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"point_size=2, jitter=2\nrain_alpha=.3"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, point_size=<span class="hljs-number">5</span>, jitter=<span class="hljs-number">.02</span>, rain_alpha=<span class="hljs-number">.3</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"point_size=10, jitter=.2\nrain_edgecolor='white', rain_linewidth=1, rain_alpha=.5"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, point_size=<span class="hljs-number">10</span>, jitter=<span class="hljs-number">.2</span>, rain_edgecolor=<span class="hljs-string">'white'</span>, rain_linewidth=<span class="hljs-number">3</span>, rain_alpha=<span class="hljs-number">.5</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">" point_size=5\nrain_edgecolor='gray', rain_linewidth=3, rain_alpha=.3"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, point_size=<span class="hljs-number">5</span>, rain_edgecolor=<span class="hljs-string">'gray'</span>, rain_linewidth=<span class="hljs-number">1</span>, rain_alpha=<span class="hljs-number">.3</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_rain.png" alt="Raincloud plotのRainの調整"></p>
+<p><code>jitter</code>のばらつきは大きくしすぎると、Cloudと重なったりします。
+ばらつきを小さくすれば、直線になっていきます。</p>
+<p>ばらつきを小さくした場合は、点が重なりやすくなります。
+<code>rain_alpha</code>で透過度を設定すると、色の濃い部分に値が多い箇所だと分かりやすくなります。</p>
+<ul>
+<li><code>move</code>: rainの位置調整 (デフォルト: 0)</li>
+</ul>
+<p>散布図はデフォルトで箱ひげ図と重なっていますが、移動して重ならないようにすることもできます。</p>
+<pre class="hljs"><code><div>pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>,  move=<span class="hljs-number">.2</span>)
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_rain_move.png" alt="Raincloud plotのRainの位置の調整"></p>
+<p><code>jitter</code>(点のばらつき)や箱ひげ図の大きさがデフォルトのときは、<code>move=.2</code>あたりがギリギリ重ならなくなる値です。</p>
+<p>(傘が雨の上にあるのはおかしいとか言ってはいけない)</p>
+<h3 id="umberella%E7%AE%B1%E3%81%B2%E3%81%92%E5%9B%B3">Umberella(箱ひげ図)</h3>
+<p>Umbrella、箱ひげ図の幅の調整方法です。</p>
+<ul>
+<li><code>width_box</code>: 箱ひげ図の幅 (デフォルト: .15)</li>
+<li><code>box_linewidth</code>: 箱ひげ図の線の幅 (デフォルト: 1)</li>
+<li><code>box_sym</code>: 箱ひげ図の外れ値のマーカー</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">8</span>))
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"width_box=0.3"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, width_box=<span class="hljs-number">0.3</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"box_linewidth=3"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_linewidth=<span class="hljs-number">5</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">"box_edgecolor='gray', box_sym=''"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_umberella.png" alt="Raincloud plotのUmberellaの調整"></p>
+<p>箱ひげ図における外れ値はデフォルトで表示されていますが、散布図においても同じ値が表示されます。
+同じ値が表示されていまうので、箱ひげ図の外れ値を表示したくない場合は、<code>box_sym=''</code>を指定することで非表示にできます。</p>
+<p>なお、箱ひげ図は、後述するグラフの重ね(<code>hue</code>)をしない場合は塗りつぶしはありません。
+また、箱ひげ図の線の色は黒色固定のため、残念ながら変更できません。</p>
+<h3 id="thunder%E5%B9%B3%E5%9D%87%E5%80%A4">Thunder(平均値)</h3>
+<p><code>pointplot=True</code>にすることで、各グループの平均値を結ぶ線、Thunderを出力することができます。</p>
+<ul>
+<li><code>pointplot</code>: 平均値を結ぶ線の表示有無 (デフォルト: false)</li>
+<li><code>linecolor</code>: 線の色 (デフォルト: red)</li>
+<li><code>point_linestyles</code>: 線のスタイル (デフォルト: -)</li>
+<li><code>point_markers</code>: 平均値のマーカー (デフォルト: o)</li>
+<li><code>point_scale</code>: 平均値のマーカーと線のスケール (デフォルト: 1)</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">12</span>))
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, pointplot=<span class="hljs-literal">True</span>)
+
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"linecolor='blue'"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, pointplot=<span class="hljs-literal">True</span>, linecolor=<span class="hljs-string">'blue'</span>)
+
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"point_linestyles='--'"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, pointplot=<span class="hljs-literal">True</span>, point_linestyles=<span class="hljs-string">'--'</span>)
+
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">"point_linestyles=':'"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, pointplot=<span class="hljs-literal">True</span>, point_linestyles=<span class="hljs-string">':'</span>)
+
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>)
+plt.title(<span class="hljs-string">"point_scale=0.7"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, pointplot=<span class="hljs-literal">True</span>, point_scale=<span class="hljs-number">0.7</span>)
+
+plt.subplot(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">6</span>)
+plt.title(<span class="hljs-string">"point_markers='*', point_scale=3"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>,pointplot=<span class="hljs-literal">True</span>, point_markers=<span class="hljs-string">'*'</span>, point_scale=<span class="hljs-number">3</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_thunder.png" alt="Raincloud plotのThunderの調整"></p>
+<h3 id="%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E9%87%8D%E3%81%AD%E3%82%8Bhue">グラフを重ねる(hue)</h3>
+<p><code>x</code>と<code>y</code>とは別に<code>hue</code>に変数を設定すると、その変数でグラフを重ねて表示することができます。</p>
+<ul>
+<li><code>hue</code>: グラフを重ねたい変数を指定</li>
+<li><code>dodge</code>: 重なった箱ひげ図をずらす (デフォルト: false)</li>
+<li><code>alpha</code>: グラフの透明度 (デフォルト: None)</li>
+<li><code>move</code>: rainの位置調整 (デフォルト: 0)</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">10</span>))
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"survived"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"dodge=True"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"survived"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+plt.title(<span class="hljs-string">"dodge=True, alpha=.7"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"survived"</span>,  orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>)
+
+plt.subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">"dodge=True, alpha=.7, move=.2"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"survived"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, move=<span class="hljs-number">.2</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_hue.png" alt="Raincloud plotのhueの調整"></p>
+<p><code>hue</code>のみを利用した状態ですと、箱ひげ図が塗りつぶされ、重なった状態で、後ろに隠れたグラフが見えない状態です。
+また、<code>hue</code>のカテゴリ数が多いとき、散布図と箱ひげ図が重なっていると非常に見にくくなります。</p>
+<p><code>hue</code>を利用したときは、<code>dodge</code>、<code>alpha</code>、<code>move</code>を設定したほうが見やすくなるかと思います。</p>
+<p>グラフを重ねたときも、<code>pointplot=True</code>にて、平均値の線を結ぶことができます。</p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">5</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"pointplot=True"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"class"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"survived"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, pointplot=<span class="hljs-literal">True</span>, move = <span class="hljs-number">.2</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"3 category"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"class"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, pointplot=<span class="hljs-literal">True</span>, move = <span class="hljs-number">.2</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_hue_thunder.png" alt="Raincloud plotのhue指定時のThunder"></p>
+<p><code>hue</code>を設定したとき、平均値を結ぶ線の色は自動でカラーパレットの色になります。
+このとき、<code>linecolor</code>で色を設定しても変更できません（色によっては見づらい...)。</p>
+<ul>
+<li><code>hue_order</code>: <code>hue</code>に設定したカテゴリ変数の重なり順を指定</li>
+</ul>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">6</span>))
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+plt.title(<span class="hljs-string">"default"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"class"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, pointplot=<span class="hljs-literal">True</span>, move=<span class="hljs-number">.2</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+plt.title(<span class="hljs-string">"hue_order=['Third', 'Second', 'First']"</span>)
+pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"class"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, pointplot=<span class="hljs-literal">True</span>, move=<span class="hljs-number">.2</span>, hue_order=[<span class="hljs-string">'Third'</span>, <span class="hljs-string">'Second'</span>, <span class="hljs-string">'First'</span>])
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_hue_order.png" alt="Raincloud plotのhue指定時の表示順序"></p>
+<p><code>x</code>の順序を<code>order</code>で変更するように、重なった片側バイオリン図は<code>hue_order</code>で順序を変更することができます。</p>
+<p>カラーパレットや<code>hue</code>に指定した変数のカテゴリ数にもよりますが、重なると分かりづらくなるので、重なる順序を指定して、見やすく指定できます。</p>
+<p>カテゴリ数が大きいとさすがに順序だけでは見やすさの改善は難しいです。
+この場合は、利用を諦めたほうが無難かと思います。</p>
+<pre class="hljs"><code><div>pt.RainCloud(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, hue=<span class="hljs-string">"deck"</span>, orient=<span class="hljs-string">"h"</span>, box_sym=<span class="hljs-string">''</span>, palette=<span class="hljs-string">'tab10'</span>, dodge=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">.7</span>, pointplot=<span class="hljs-literal">True</span>, move=<span class="hljs-number">.2</span>)
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_hue_many_category.png" alt="Raincloud plotのhue指定時のカテゴリ数が多すぎる例"></p>
+<h2 id="cloud%E7%89%87%E5%81%B4%E3%83%90%E3%82%A4%E3%82%AA%E3%83%AA%E3%83%B3%E4%BB%A5%E5%A4%96%E3%82%92%E8%87%AA%E5%89%8D%E3%81%A7raincloud-plot%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">Cloud(片側バイオリン)以外を自前でRaincloud plotを作ってみる</h2>
+<p><a href="https://github.com/pog87/PtitPrince">pog87/PtitPrince</a>ですと、微妙に調整できない箇所があるので、片側バイオリン以外を自前でRaincloud plotをする方法もご紹介します。</p>
+<p>片側バイオリンはSeabornでは出力できないので、ここだけは<a href="https://github.com/pog87/PtitPrince">pog87/PtitPrince</a>の力を借ります。<code>half_violinplot</code>にて片側バイオリンを表示できます。</p>
+<pre class="hljs"><code><div>pt.half_violinplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, width=<span class="hljs-number">0.5</span>, inner=<span class="hljs-literal">None</span>)
+</div></code></pre>
+<p><img src="img/python_half_violin_plot.png" alt="片側バイオリン図"></p>
+<p>以下、散布図と箱ひげ図をSeabornで重ねた例です。</p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">4</span>))
+palette = <span class="hljs-string">'Set2'</span>
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)
+sns.stripplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, zorder=<span class="hljs-number">0</span>, palette=palette, size=<span class="hljs-number">2</span>)
+sns.boxplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>,  boxprops={<span class="hljs-string">'facecolor'</span>:<span class="hljs-string">'none'</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, whiskerprops={<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">2</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, width=<span class="hljs-number">.15</span>)
+pt.half_violinplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, inner=<span class="hljs-literal">None</span>, palette=palette, width=<span class="hljs-number">0.4</span>, offset=<span class="hljs-number">.15</span>)
+
+plt.subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)
+sns.swarmplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>,  zorder=<span class="hljs-number">0</span>, palette=palette, size=<span class="hljs-number">2</span>)
+sns.boxplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, boxprops={<span class="hljs-string">'facecolor'</span>:<span class="hljs-string">'none'</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, whiskerprops={<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">2</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, width=<span class="hljs-number">.15</span>)
+pt.half_violinplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, inner=<span class="hljs-literal">None</span>, palette=palette, width=<span class="hljs-number">0.4</span>, offset=<span class="hljs-number">.25</span>)
+plt.tight_layout()
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_self.png" alt="自前でRaincloud plot"></p>
+<p>散布図は、strip plotとswarm plotの二例を載せています。</p>
+<p>strip plotは谷間は分かりやすいものの、山の部分がどのようになっているかが分かりにくいです。</p>
+<p>swarm plotは点を積み重ねてくれるので、山の部分がどうなっているか分かりやすくなります。
+Cloudは滑らかな山になるので、具体的な凹凸を知るときに役立ちます。</p>
+<p>自前での作成の難点は、グラフのサイズや点のサイズを変更すると、片側バイオリン図と散布図がすぐ重なってしまうので、<code>offset</code>や<code>width</code>でうまく調整してあげる必要があるのが難点です。</p>
+<p>point plotを使うことで、平均値を結ぶ線、Thunderも付加できます。</p>
+<pre class="hljs"><code><div>plt.title(<span class="hljs-string">"+Thunder"</span>)
+palette = <span class="hljs-string">'Set2'</span>
+sns.swarmplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>,  zorder=<span class="hljs-number">0</span>, palette=palette, size=<span class="hljs-number">2</span>)
+sns.boxplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, boxprops={<span class="hljs-string">'facecolor'</span>:<span class="hljs-string">'none'</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, whiskerprops={<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">2</span>, <span class="hljs-string">"zorder"</span>:<span class="hljs-number">1</span>}, width=<span class="hljs-number">.15</span>)
+sns.pointplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>,  zorder=<span class="hljs-number">2</span>, errwidth=<span class="hljs-number">0</span>, color=<span class="hljs-string">'red'</span>)
+pt.half_violinplot(data=titanic, x=<span class="hljs-string">"survived"</span>, y=<span class="hljs-string">"age"</span>, inner=<span class="hljs-literal">None</span>, palette=palette, cut=<span class="hljs-number">0</span>, width=<span class="hljs-number">0.4</span>, offset=<span class="hljs-number">.18</span>)
+</div></code></pre>
+<p><img src="img/python_raincloud_plot_self2.png" alt="自前でRaincloud plot + Thunder"></p>
+<h2 id="python%E4%BB%A5%E5%A4%96%E3%81%AB%E3%82%88%E3%82%8Braincloud-plot">Python以外によるRaincloud plot</h2>
+<p>本記事はPythonによるRaincloud plotのご紹介でしたが、Python以外でもRaincloud plotを出力することができます。</p>
+<h3 id="r%E3%81%AB%E3%82%88%E3%82%8Braincloud-plot">RによるRaincloud plot</h3>
+<ul>
+<li><a href="https://github.com/jorvlan/raincloudplots">jorvlan/raincloudplots</a>を利用</li>
+<li><a href="https://github.com/wilkelab/ggridges">wilkelab/ggridges</a>を利用
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html#jittering-points">geom_density_ridges関数の説明</a></li>
+</ul>
+</li>
+<li>ggdistを利用
+<ul>
+<li><a href="https://www.r-bloggers.com/2021/07/ggdist-make-a-raincloud-plot-to-visualize-distribution-in-ggplot2/">ggdist: Make a Raincloud Plot to Visualize Distribution in ggplot2</a> (英語)</li>
+<li><a href="https://kirikuroda.com/post/2021/10/22/raincloudplot-ggplot2/">Raincloud plotの描き方：ggplot2</a>
+<ul>
+<li>それぞれ、散布図の出力が異なり、前者は棒グラフのように点が積み上がっており、後者は点が散らばるような出力をしています。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/gabrifc/raincloud-shiny">gabrifc/raincloud-shiny</a>を利用
+<ul>
+<li>ShinyにてRaincloud plotを出力</li>
+</ul>
+</li>
+</ul>
+<h3 id="sas%E3%81%AB%E3%82%88%E3%82%8Braincloud-plot">SASによるRaincloud plot</h3>
+<ul>
+<li>イーピーエス株式会社の森岡裕さんがSASユーザー総会2022にて発表したGTL(Graph Template Language)とSgrenderプロシジャを用いてRaincloud plotを実装した例
+<ul>
+<li><a href="https://www.sas.com/ja_jp/events/22/users-group-2022/sessions.html#m=a-1">SASによるRaincloud Plotの実装 | SASユーザー総会2022</a></li>
+</ul>
+</li>
+<li>SAS用グラフパッケージ「<a href="https://github.com/Superman-jp/SAS_Plotter">SAS Plotter</a>のマクロを利用
+<ul>
+<li><a href="https://superman-jp.hatenablog.com/entry/SASPlotter_Raincloud">SAS PlotterでRaincloud plotを作図する | SupermanJP</a></li>
+</ul>
+</li>
+<li>SASパッケージフレームワーク「<a href="https://github.com/yabwon/SAS_PACKAGES">SAS package</a>」のマクロを利用
+<ul>
+<li><a href="https://github.com/yabwon/SAS_PACKAGES/blob/main/packages/baseplus.md#raincloudplot-macro">SAS package macro %RainCloudPlot()</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<ul>
+<li><a href="https://oumpy.github.io/blog/2020/12/ptitprince_tutorial.html">PtitPrinceによるPythonでのRaincloud plotの描画 | 大阪大学医学部 Python会 (情報医科学研究会)</a></li>
+<li><a href="https://github.com/pog87/PtitPrince">pog87/PtitPrince</a></li>
+</ul>
+
+</body>
+</html>
